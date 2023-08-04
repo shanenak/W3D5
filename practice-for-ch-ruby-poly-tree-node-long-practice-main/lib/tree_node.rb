@@ -41,12 +41,25 @@ class PolyTreeNode
         return "<# Value: #{@value} Parent: #{@parent} Children: #{@children} "
     end
 
+    # def dfs(target)
+    #     tree = self.dup
+    #     stack = self
+    #     self = self.children
+    #     while stack.length > 0 
+    #         if stack[-1] == target
+    #             return self
+    #         elsif stack[-1] != target
+    #             stack.pop
+    #             stack << stack[-1].children
+    #         end
+    #     end
+    # end
+
     def dfs(target)
-        queue = self
-        self = self.children
-
-        # while queue.length > 0 
-
-        # end
+        return target if self.value == target
+        return nil if self.children.empty?
+        self.children.each do |node| 
+            result = node.dfs(target)
+        end
     end
 end
