@@ -32,7 +32,21 @@ class PolyTreeNode
         # @children << child
     end
 
+    def remove_child(child)
+        raise "Node is not a child" unless self.children.include?(child)
+        child.parent = nil
+    end
+
     def inspect
         return "<# Value: #{@value} Parent: #{@parent} Children: #{@children} "
+    end
+
+    def dfs(target)
+        queue = self
+        self = self.children
+
+        # while queue.length > 0 
+
+        # end
     end
 end
