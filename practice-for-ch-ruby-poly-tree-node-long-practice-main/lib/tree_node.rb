@@ -8,15 +8,23 @@ class PolyTreeNode
     def parent
         @parent
     end
+
     def children
         @children
     end
+
     def value
         @value
     end
     
     def parent=(new_parent) # nil or an instance
         @parent = new_parent if !@parent
-        new_parent.children << self
+        if new_parent || !new_parent.children.include?(self) 
+            new_parent.children << self
+        end
+    end
+
+    def inspect
+        return "<# Value: #{@value} Parent: #{@parent} Children: #{@children} "
     end
 end
